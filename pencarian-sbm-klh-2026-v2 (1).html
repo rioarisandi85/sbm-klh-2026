@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Standar Biaya Perjadin & Sewa Mobil KLH/BPLH TA 2026</title>
+<style>
+  :root{
+    --primary:#14532d; --primary-soft:#dcfce7; --accent:#0284c7;
+    --warn:#b45309; --warn-soft:#fef3c7; --bg:#f3f6f4; --card:#fff;
+    --text:#1f2937; --muted:#6b7280; --border:#e5e7eb; --hl:#fef9c3;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.45}
+  .container{max-width:1380px;margin:0 auto}
+  header.top{background:linear-gradient(135deg,#0f3d21,#166534);color:#fff;padding:12px 18px 0;box-shadow:0 2px 10px rgba(0,0,0,.15);position:sticky;top:0;z-index:20}
+  header h1{margin:0;font-size:1.05rem}
+  header .sub{margin:2px 0 10px;font-size:.78rem;color:#bbf7d0}
+
+  .searchbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+  .search-wrap{position:relative;flex:1 1 320px}
+  .search-wrap input{width:100%;padding:11px 36px 11px 38px;border:2px solid transparent;border-radius:10px;font-size:.95rem;background:#fff;color:var(--text)}
+  .search-wrap input:focus{outline:none;border-color:#86efac}
+  .search-wrap .ico{position:absolute;left:12px;top:50%;transform:translateY(-50%);pointer-events:none}
+  .search-wrap .clear{position:absolute;right:8px;top:50%;transform:translateY(-50%);border:none;background:#e5e7eb;border-radius:50%;width:22px;height:22px;cursor:pointer;display:none;font-size:.8rem;line-height:1}
+  .search-wrap.has .clear{display:block}
+  .gol-wrap{display:flex;align-items:center;gap:6px;font-size:.78rem;color:#bbf7d0}
+  .gol-wrap select{padding:9px 10px;border-radius:8px;border:none;font-size:.85rem;max-width:230px}
+  .hint{width:100%;font-size:.72rem;color:#bbf7d0;opacity:.9}
+  kbd{background:rgba(255,255,255,.2);border-radius:4px;padding:0 5px;font-family:inherit}
+
+  .chips{display:flex;gap:6px;overflow-x:auto;padding:10px 0 2px;scrollbar-width:thin}
+  .chip{flex:0 0 auto;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.12);color:#fff;border-radius:999px;padding:5px 12px;font-size:.8rem;font-weight:600;cursor:pointer;white-space:nowrap}
+  .chip span{opacity:.7;font-weight:500;margin-left:3px}
+  .chip:hover{background:rgba(255,255,255,.25)}
+  .chip.on{background:#fff;color:var(--primary);border-color:#fff}
+
+  .nav-tabs{display:flex;gap:4px;overflow-x:auto;margin-top:8px;scrollbar-width:none}
+  .nav-tabs::-webkit-scrollbar{display:none}
+  .nav-btn{flex:0 0 auto;background:transparent;color:#d1fae5;border:none;border-bottom:3px solid transparent;padding:9px 14px;cursor:pointer;font-size:.86rem;font-weight:600;white-space:nowrap}
+  .nav-btn:hover{color:#fff}
+  .nav-btn.active{color:#fff;border-bottom-color:#86efac;background:rgba(255,255,255,.1);border-radius:8px 8px 0 0}
+
+  main{padding:16px 16px 40px}
+  .tab-pane{display:none}.tab-pane.active{display:block}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px 16px;box-shadow:0 2px 8px rgba(0,0,0,.05);margin-bottom:14px}
+  .toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;margin-bottom:10px}
+  .toolbar .left{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+  .meta{font-weight:700;color:var(--primary);font-size:.9rem}
+  .meta small{font-weight:500;color:var(--muted);margin-left:6px}
+  .check-label{display:inline-flex;align-items:center;gap:6px;font-size:.82rem;font-weight:600;cursor:pointer}
+  .btn{padding:7px 12px;border:none;border-radius:7px;font-size:.82rem;font-weight:600;cursor:pointer}
+  .btn-primary{background:var(--primary);color:#fff}.btn-accent{background:var(--accent);color:#fff}.btn-light{background:#e5e7eb}
+  .btn:hover{opacity:.9}
+  .badge{display:inline-block;padding:2px 8px;border-radius:999px;font-size:.72rem;font-weight:600}
+  .badge-max{background:#fee2e2;color:#991b1b}.badge-est{background:var(--warn-soft);color:var(--warn)}
+
+  .info-strip{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:9px 13px;font-size:.82rem;margin-bottom:10px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
+  .note-box{font-size:.79rem;color:var(--muted);margin-top:10px}
+
+  /* tabel */
+  .table-wrap{overflow:auto;max-height:68vh;border:1px solid var(--border);border-radius:8px}
+  table{width:100%;border-collapse:separate;border-spacing:0;font-size:.85rem}
+  thead th{position:sticky;top:0;background:#f0fdf4;color:var(--primary);font-weight:700;padding:9px 10px;border-bottom:2px solid #bbf7d0;text-align:left;cursor:pointer;user-select:none;z-index:3;vertical-align:bottom}
+  thead th small{display:block;font-weight:500;color:var(--muted);font-size:.7rem}
+  thead th:hover{background:#dcfce7}
+  thead tr.grp th{background:#14532d;color:#fff;text-align:center;font-size:.76rem;height:34px;cursor:default;border-bottom:1px solid #166534}
+  thead tr.grp th.first{background:#f0fdf4;color:var(--primary);text-align:left;cursor:pointer;border-bottom:2px solid #bbf7d0}
+  thead tr.sub th{top:34px}
+  th.num,td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+  th.first,td.first{position:sticky;left:0;min-width:170px}
+  thead th.first{z-index:5}
+  td{padding:8px 10px;border-bottom:1px solid var(--border);background:#fff}
+  tbody tr:nth-child(even) td{background:#fafdfb}
+  tbody tr:hover td{background:#ecfdf5}
+  td.first{z-index:2;box-shadow:1px 0 0 var(--border)}
+  td.num{cursor:copy}
+  td.num:hover{outline:2px solid #86efac;outline-offset:-2px}
+  td.note{color:var(--muted);font-size:.78rem}
+  .pname{font-weight:700;color:var(--text);text-decoration:none;display:block}
+  .pname:hover{color:var(--primary);text-decoration:underline}
+  td.first small{display:block;color:var(--muted);font-size:.72rem}
+  td.first small i{color:var(--accent);font-style:normal;text-transform:capitalize}
+  .hl{background:var(--hl)!important;font-weight:700;color:#854d0e}
+  td.dim{color:#9ca3af}
+  th.hl{background:#fde68a!important}
+  .empty{padding:26px;text-align:center;color:var(--muted)}
+  .empty .btn{margin-left:6px}
+
+  /* ringkasan */
+  .home-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+  .home-chips .chip{background:#f0fdf4;color:var(--primary);border-color:#bbf7d0}
+  .home-chips .chip:hover{background:#dcfce7}
+  .home-chips .chip.on{background:var(--primary);color:#fff;border-color:var(--primary)}
+  .detail h2{margin:0 0 2px;font-size:1.25rem;color:var(--primary)}
+  .detail .reg{color:var(--muted);font-size:.82rem;margin-bottom:10px}
+  .sec{margin:14px 0 6px;font-size:.8rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em;color:#166534}
+  .tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px}
+  .tile{border:1px solid var(--border);border-radius:8px;padding:9px 11px;background:#fff;cursor:copy;transition:.12s}
+  .tile:hover{border-color:#4ade80;box-shadow:0 0 0 3px #dcfce7}
+  .tile .l{font-size:.73rem;color:var(--muted)}
+  .tile .v{font-size:1.02rem;font-weight:800;font-variant-numeric:tabular-nums}
+  .tile .s{font-size:.7rem;color:var(--muted)}
+  .tile.hl{background:var(--hl);border-color:#facc15}
+  .calc{margin-top:18px;border-top:2px dashed var(--border);padding-top:14px}
+  .calc h3{margin:0 0 10px;font-size:1rem;color:var(--primary)}
+  .calc .controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;align-items:end}
+  label.f{display:block;font-size:.76rem;font-weight:700;color:#374151;margin-bottom:3px}
+  .calc input[type=number],.calc select{width:100%;padding:8px 10px;border:1px solid #d1d5db;border-radius:7px;font-size:.9rem}
+  .calc-out{margin-top:12px;max-width:620px}
+  .calc-out table td{background:#fff!important;padding:7px 8px}
+  .calc-out .x{color:var(--muted);font-size:.76rem}
+  .calc-out tr.total td{font-weight:800;font-size:1.02rem;background:var(--primary-soft)!important;color:var(--primary);cursor:copy}
+
+  #toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(20px);background:#111827;color:#fff;padding:9px 16px;border-radius:8px;font-size:.84rem;opacity:0;pointer-events:none;transition:.2s;z-index:50}
+  #toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+  footer{font-size:.74rem;color:var(--muted);text-align:center;padding:6px 16px 24px}
+
+  @media (max-width:640px){
+    header.top{padding:10px 12px 0}
+    main{padding:12px 10px 40px}
+    th.first,td.first{min-width:130px}
+    .gol-wrap{width:100%}.gol-wrap select{flex:1;max-width:none}
+  }
+  @media print{
+    header.top,.no-print,.nav-tabs,#toast,footer{display:none!important}
+    .table-wrap{max-height:none;overflow:visible}
+    thead th,th.first,td.first{position:static}
+  }
+</style>
+</head>
+<body>
+
+<header class="top no-print">
+  <div class="container">
+    <h1>📊 Standar Biaya KLH/BPLH TA 2026</h1>
+    <p class="sub">Kepmen LH / Kepala BPLH Nomor 145 Tahun 2026 — uang harian, hotel, taksi, sewa mobil</p>
+
+    <div class="searchbar">
+      <div class="search-wrap" id="searchWrap">
+        <span class="ico">🔍</span>
+        <input id="q" type="search" autocomplete="off" placeholder='Cari provinsi, kota, atau singkatan — mis. "surabaya", "jabar", "NTT", "papua"' />
+        <button class="clear" id="qClear" title="Hapus pencarian (Esc)">✕</button>
+      </div>
+      <div class="gol-wrap">
+        <label for="gol">Golongan saya:</label>
+        <select id="gol">
+          <option value="ALL">Semua golongan</option>
+          <option value="h1">Pejabat Negara / Eselon I</option>
+          <option value="h2">Pej. Negara Lain / Eselon II</option>
+          <option value="h3">Eselon III / Golongan IV</option>
+          <option value="h4">Eselon IV / Golongan III–I</option>
+        </select>
+      </div>
+      <div class="hint">Pencarian berlaku di semua tab · klik angka untuk menyalin · klik nama provinsi untuk ringkasan lengkap · tekan <kbd>/</kbd> untuk mencari</div>
+    </div>
+
+    <div class="chips" id="regChips"></div>
+
+    <nav class="nav-tabs">
+      <button class="nav-btn active" data-tab="home">🔎 Ringkasan &amp; Kalkulator</button>
+      <button class="nav-btn" data-tab="uh">💵 Uang Harian</button>
+      <button class="nav-btn" data-tab="hotel">🏨 Hotel</button>
+      <button class="nav-btn" data-tab="taksi">🚕 Taksi Bandara</button>
+      <button class="nav-btn" data-tab="sewa">🚗 Sewa Mobil</button>
+      <button class="nav-btn" data-tab="ibu">🚌 Transport Ibukota Provinsi</button>
+      <button class="nav-btn" data-tab="jkt">🚐 Transport Jakarta Sekitar</button>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+
+  <!-- RINGKASAN -->
+  <section id="pane-home" class="tab-pane active">
+    <div class="card">
+      <div class="meta" id="meta-home" style="margin-bottom:10px"></div>
+      <div class="home-chips" id="home-chips"></div>
+      <div id="home-detail" class="detail"></div>
+    </div>
+  </section>
+
+  <!-- UANG HARIAN -->
+  <section id="pane-uh" class="tab-pane">
+    <div class="card">
+      <div class="info-strip">
+        <span><b>Uang Representasi (Lamp. 11.2):</b> Pejabat Negara <b>Rp 250.000</b> (Luar Kota) / <b>Rp 125.000</b> (Dalam Kota &gt;8j)</span>
+        <span>Eselon I: <b>Rp 200.000</b> / <b>Rp 100.000</b> &nbsp;|&nbsp; Eselon II: <b>Rp 150.000</b> / <b>Rp 75.000</b></span>
+      </div>
+      <div class="toolbar">
+        <div class="left"><span class="meta" id="meta-uh"></span><span class="badge badge-max">Batas tertinggi (Lampiran 11)</span></div>
+        <div class="no-print"><button class="btn btn-accent" data-export="uh">📥 CSV</button> <button class="btn btn-primary" onclick="window.print()">🖨️ Cetak</button></div>
+      </div>
+      <div class="table-wrap" id="wrap-uh"></div>
+      <div class="note-box"><b>Ketentuan (Bab I.W):</b> Uang harian terdiri dari uang makan, uang saku, dan transport lokal. Bila perjalanan dinas memerlukan lebih dari satu lokasi tujuan di kabupaten/kota yang sama dan transport lokal dibayar riil, uang harian diberikan sebesar <b>60%</b>.</div>
+    </div>
+  </section>
+
+  <!-- HOTEL -->
+  <section id="pane-hotel" class="tab-pane">
+    <div class="card">
+      <div class="toolbar">
+        <div class="left">
+          <span class="meta" id="meta-hotel"></span><span class="badge badge-max">Batas tertinggi (Lampiran 12 — orang/hari)</span>
+          <label class="check-label no-print"><input type="checkbox" id="chkHotel30" /> Tampilkan lumpsum 30% (tidak menginap — Bab I.X)</label>
+        </div>
+        <div class="no-print"><button class="btn btn-accent" data-export="hotel">📥 CSV</button> <button class="btn btn-primary" onclick="window.print()">🖨️ Cetak</button></div>
+      </div>
+      <div class="table-wrap" id="wrap-hotel"></div>
+      <div class="note-box"><b>Ketentuan (Bab I.X):</b> Pejabat Negara diberikan fasilitas Hotel Bintang Lima kelas Suite. Jika tidak menggunakan fasilitas penginapan, diberikan biaya penginapan secara <i>lumpsum</i> sebesar <b>30%</b> dari tarif hotel kota tujuan. Gunakan pilihan “Golongan saya” di atas untuk menyorot satu kolom.</div>
+    </div>
+  </section>
+
+  <!-- TAKSI -->
+  <section id="pane-taksi" class="tab-pane">
+    <div class="card">
+      <div class="toolbar">
+        <div class="left"><span class="meta" id="meta-taksi"></span><span class="badge badge-est">Dapat dilampaui / lumpsum (Lampiran 29 — orang/kali)</span></div>
+        <div class="no-print"><button class="btn btn-accent" data-export="taksi">📥 CSV</button> <button class="btn btn-primary" onclick="window.print()">🖨️ Cetak</button></div>
+      </div>
+      <div class="table-wrap" id="wrap-taksi"></div>
+      <div class="note-box"><b>Ketentuan (Bab II.P):</b> Metode <i>lumpsum</i>. Bila biaya transportasi melebihi satuan biaya yang ditetapkan, dapat diberikan sesuai biaya riil sepanjang perjalanan dari dan/atau ke kantor tidak menggunakan kendaraan pribadi. Provinsi DOB Papua belum tercantum terpisah pada Lampiran 29.</div>
+    </div>
+  </section>
+
+  <!-- SEWA -->
+  <section id="pane-sewa" class="tab-pane">
+    <div class="card">
+      <div class="info-strip">
+        <span><b>Tarif nasional tetap:</b> Sewa kendaraan Pejabat Eselon I = <b>Rp 18.720.000/bulan</b> (Lamp. 17.2)</span>
+        <span>Sewa Dobel Gardan Medan Berat (Tabel 32 — dapat dilampaui) = <b>Rp 1.500.000/unit/hari</b></span>
+      </div>
+      <div class="toolbar">
+        <div class="left">
+          <span class="meta" id="meta-sewa"></span><span class="badge badge-max">Batas tertinggi (Lampiran 17.1–17.3)</span>
+          <label class="check-label no-print"><input type="checkbox" id="chkOver7" /> Roda 4 &gt; 7 seat (maks. 150% — Bab I.EE.1)</label>
+        </div>
+        <div class="no-print"><button class="btn btn-accent" data-export="sewa">📥 CSV</button> <button class="btn btn-primary" onclick="window.print()">🖨️ Cetak</button></div>
+      </div>
+      <div class="table-wrap" id="wrap-sewa"></div>
+      <div class="note-box"><b>Ketentuan (Bab I.EE):</b> Sewa insidentil sudah termasuk BBM &amp; pengemudi. Untuk sewa operasional bulanan, penyedia wajib menjamin kendaraan siap pakai &amp; pemeliharaan rutin (tidak boleh dianggarkan pemeliharaan terpisah).</div>
+    </div>
+  </section>
+
+  <!-- IBUKOTA PROVINSI -->
+  <section id="pane-ibu" class="tab-pane">
+    <div class="card">
+      <div class="toolbar">
+        <div class="left"><span class="meta" id="meta-ibu"></span><span class="badge badge-est">Batas estimasi (Lampiran 20.1 — sekali jalan)</span></div>
+        <div class="no-print"><button class="btn btn-accent" data-export="ibu">📥 CSV</button> <button class="btn btn-primary" onclick="window.print()">🖨️ Cetak</button></div>
+      </div>
+      <div class="table-wrap" id="wrap-ibu"></div>
+      <div class="note-box"><b>Ketentuan (Bab II.A):</b> Biaya transport darat dari ibukota provinsi ke kabupaten/kota dalam provinsi yang sama (atau sebaliknya) untuk perjalanan dinas dalam negeri. Bila tujuan <b>belum tercantum</b> di lampiran, biaya mengacu pada harga pasar (<i>at cost</i>) dengan prinsip efisiensi dan efektivitas. Untuk DKI Jakarta lihat tab “Transport Jakarta Sekitar”. Cari berdasarkan provinsi, ibukota, atau nama kab/kota tujuan.</div>
+    </div>
+  </section>
+
+  <!-- JAKARTA -->
+  <section id="pane-jkt" class="tab-pane">
+    <div class="card">
+      <div class="toolbar">
+        <div class="left"><span class="meta" id="meta-jkt"></span><span class="badge badge-est">Dapat dilampaui / estimasi (Lampiran 20.2)</span></div>
+        <div class="no-print"><button class="btn btn-accent" data-export="jkt">📥 CSV</button> <button class="btn btn-primary" onclick="window.print()">🖨️ Cetak</button></div>
+      </div>
+      <div class="table-wrap" id="wrap-jkt"></div>
+      <div class="note-box"><b>Ketentuan (Bab II.B):</b> Berlaku dari tempat kedudukan di DKI Jakarta ke kota/kabupaten sekitar atau sebaliknya untuk perjalanan dinas dalam negeri dengan <b>metode lumpsum</b>. Di tab ini pencarian mencocokkan nama kota/kabupaten tujuan.</div>
+    </div>
+  </section>
+</main>
+
+<footer class="no-print">Data disalin dari lampiran Kepmen/Kepala BPLH No. 145 Tahun 2026. Cocokkan dengan dokumen resmi sebelum dipakai untuk SPJ/RAB.</footer>
+<div id="toast"></div>
+
+<script>
+const DATA = [
+  { no: 1, name: "ACEH", reg: "Sumatra", uh_lk: 360000, uh_dk: 140000, uh_diklat: 110000, h1: 5109000, h2: 3526000, h3: 1578000, h4: 770000, taksi: 123000, taksiNote: "Lampiran 29 Resmi", r4: 962000, bus_s: 3479000, bus_b: 4810000, sewa_es2: 15031000, pickup: 6678000, minibus: 6922000, dg: 16144000 },
+  { no: 2, name: "SUMATRA UTARA", reg: "Sumatra", uh_lk: 370000, uh_dk: 150000, uh_diklat: 110000, h1: 4960000, h2: 2195000, h3: 1188000, h4: 699000, taksi: 278000, taksiNote: "Lampiran 29 Resmi", r4: 1220000, bus_s: 3062000, bus_b: 3753000, sewa_es2: 14713000, pickup: 6440000, minibus: 6445000, dg: 15985000 },
+  { no: 3, name: "RIAU", reg: "Sumatra", uh_lk: 370000, uh_dk: 150000, uh_diklat: 110000, h1: 3820000, h2: 3119000, h3: 1650000, h4: 852000, taksi: 99000, taksiNote: "Lampiran 29 Resmi", r4: 978000, bus_s: 3155000, bus_b: 4585000, sewa_es2: 13730000, pickup: 5930000, minibus: 6000000, dg: 15000000 },
+  { no: 4, name: "KEPULAUAN RIAU", reg: "Sumatra", uh_lk: 370000, uh_dk: 150000, uh_diklat: 110000, h1: 6177000, h2: 2481000, h3: 1388000, h4: 792000, taksi: 159000, taksiNote: "Lampiran 29 Resmi", r4: 1049000, bus_s: 2373000, bus_b: 3910000, sewa_es2: 15900000, pickup: 7558000, minibus: 7791000, dg: 16130000 },
+  { no: 5, name: "JAMBI", reg: "Sumatra", uh_lk: 370000, uh_dk: 150000, uh_diklat: 110000, h1: 5004000, h2: 4102000, h3: 1252000, h4: 580000, taksi: 133000, taksiNote: "Lampiran 29 Resmi", r4: 1152000, bus_s: 5585000, bus_b: 7190000, sewa_es2: 14310000, pickup: 6201000, minibus: 6286000, dg: 15667000 },
+  { no: 6, name: "SUMATRA BARAT", reg: "Sumatra", uh_lk: 380000, uh_dk: 150000, uh_diklat: 110000, h1: 5603000, h2: 3373000, h3: 1353000, h4: 701000, taksi: 171000, taksiNote: "Lampiran 29 Resmi", r4: 922000, bus_s: 2432000, bus_b: 3500000, sewa_es2: 14469000, pickup: 6286000, minibus: 6519000, dg: 15741000 },
+  { no: 7, name: "SUMATRA SELATAN", reg: "Sumatra", uh_lk: 380000, uh_dk: 150000, uh_diklat: 110000, h1: 6298000, h2: 3134000, h3: 1966000, h4: 861000, taksi: 162000, taksiNote: "Lampiran 29 Resmi", r4: 1507000, bus_s: 2200000, bus_b: 4097000, sewa_es2: 14310000, pickup: 5883000, minibus: 6201000, dg: 14780000 },
+  { no: 8, name: "LAMPUNG", reg: "Sumatra", uh_lk: 380000, uh_dk: 150000, uh_diklat: 110000, h1: 4806000, h2: 2663000, h3: 1539000, h4: 621000, taksi: 162000, taksiNote: "Lampiran 29 Resmi", r4: 897000, bus_s: 3594000, bus_b: 5052000, sewa_es2: 13430000, pickup: 5780000, minibus: 6201000, dg: 15667000 },
+  { no: 9, name: "BENGKULU", reg: "Sumatra", uh_lk: 380000, uh_dk: 150000, uh_diklat: 110000, h1: 2140000, h2: 1628000, h3: 1546000, h4: 692000, taksi: 106000, taksiNote: "Lampiran 29 Resmi", r4: 985000, bus_s: 5145000, bus_b: 7037000, sewa_es2: 13500000, pickup: 5930000, minibus: 5930000, dg: 14780000 },
+  { no: 10, name: "BANGKA BELITUNG", reg: "Sumatra", uh_lk: 410000, uh_dk: 160000, uh_diklat: 120000, h1: 4424000, h2: 2838000, h3: 1957000, h4: 724000, taksi: 94000, taksiNote: "Lampiran 29 Resmi", r4: 1258000, bus_s: 3477000, bus_b: 5342000, sewa_es2: 13515000, pickup: 6604000, minibus: 6763000, dg: 16059000 },
+  { no: 11, name: "BANTEN", reg: "Jawa", uh_lk: 370000, uh_dk: 150000, uh_diklat: 110000, h1: 5725000, h2: 2373000, h3: 1301000, h4: 775000, taksi: 300000, taksiNote: "Lampiran 29 Resmi", r4: 1017000, bus_s: 3208000, bus_b: 4368000, sewa_es2: 14787000, pickup: 5400000, minibus: 6011000, dg: 15349000 },
+  { no: 12, name: "JAWA BARAT", reg: "Jawa", uh_lk: 430000, uh_dk: 170000, uh_diklat: 130000, h1: 5812000, h2: 2755000, h3: 1366000, h4: 735000, taksi: 180000, taksiNote: "Lampiran 29 Resmi", r4: 988000, bus_s: 2563000, bus_b: 3602000, sewa_es2: 13950000, pickup: 5400000, minibus: 5670000, dg: 14480000 },
+  { no: 13, name: "DKI JAKARTA", reg: "Jawa", uh_lk: 530000, uh_dk: 210000, uh_diklat: 160000, h1: 9331000, h2: 2084000, h3: 1062000, h4: 730000, taksi: 250000, taksiNote: "Lampiran 29 Resmi", r4: 1305000, bus_s: 2816000, bus_b: 3938000, sewa_es2: 13250000, pickup: 5660000, minibus: 6690000, dg: 14770000 },
+  { no: 14, name: "JAWA TENGAH", reg: "Jawa", uh_lk: 370000, uh_dk: 150000, uh_diklat: 110000, h1: 6129000, h2: 2138000, h3: 1286000, h4: 810000, taksi: 105000, taksiNote: "Lampiran 29 Resmi", r4: 1347000, bus_s: 3063000, bus_b: 4492000, sewa_es2: 14787000, pickup: 5968000, minibus: 6201000, dg: 15392000 },
+  { no: 15, name: "D.I. YOGYAKARTA", reg: "Jawa", uh_lk: 420000, uh_dk: 170000, uh_diklat: 130000, h1: 5100000, h2: 2695000, h3: 1600000, h4: 845000, taksi: 258000, taksiNote: "Lampiran 29 Resmi", r4: 978000, bus_s: 2570000, bus_b: 3808000, sewa_es2: 14872000, pickup: 5968000, minibus: 6201000, dg: 15392000 },
+  { no: 16, name: "JAWA TIMUR", reg: "Jawa", uh_lk: 410000, uh_dk: 160000, uh_diklat: 120000, h1: 4449000, h2: 2007000, h3: 1234000, h4: 814000, taksi: 225000, taksiNote: "Lampiran 29 Resmi", r4: 1212000, bus_s: 2446000, bus_b: 3303000, sewa_es2: 14236000, pickup: 5630000, minibus: 6201000, dg: 15508000 },
+  { no: 17, name: "BALI", reg: "Bali & Nusa Tenggara", uh_lk: 480000, uh_dk: 190000, uh_diklat: 140000, h1: 7328000, h2: 2433000, h3: 1754000, h4: 1138000, taksi: 219000, taksiNote: "Lampiran 29 Resmi", r4: 1275000, bus_s: 3174000, bus_b: 4224000, sewa_es2: 14310000, pickup: 6286000, minibus: 6360000, dg: 15826000 },
+  { no: 18, name: "NUSA TENGGARA BARAT", reg: "Bali & Nusa Tenggara", uh_lk: 440000, uh_dk: 180000, uh_diklat: 130000, h1: 4682000, h2: 2648000, h3: 1418000, h4: 907000, taksi: 224000, taksiNote: "Lampiran 29 Resmi", r4: 1103000, bus_s: 2532000, bus_b: 3303000, sewa_es2: 14469000, pickup: 6080000, minibus: 6604000, dg: 15900000 },
+  { no: 19, name: "NUSA TENGGARA TIMUR", reg: "Bali & Nusa Tenggara", uh_lk: 430000, uh_dk: 170000, uh_diklat: 130000, h1: 4013000, h2: 2283000, h3: 1450000, h4: 737000, taksi: 105000, taksiNote: "Lampiran 29 Resmi", r4: 926000, bus_s: 3059000, bus_b: 3468000, sewa_es2: 15741000, pickup: 7130000, minibus: 7791000, dg: 16130000 },
+  { no: 20, name: "KALIMANTAN BARAT", reg: "Kalimantan", uh_lk: 380000, uh_dk: 150000, uh_diklat: 110000, h1: 2654000, h2: 1923000, h3: 1125000, h4: 576000, taksi: 165000, taksiNote: "Lampiran 29 Resmi", r4: 921000, bus_s: 3471000, bus_b: 4848000, sewa_es2: 14872000, pickup: 6763000, minibus: 6922000, dg: 16144000 },
+  { no: 21, name: "KALIMANTAN TENGAH", reg: "Kalimantan", uh_lk: 360000, uh_dk: 140000, uh_diklat: 110000, h1: 4901000, h2: 3391000, h3: 1189000, h4: 706000, taksi: 130000, taksiNote: "Lampiran 29 Resmi", r4: 1177000, bus_s: 4924000, bus_b: 6706000, sewa_es2: 14140000, pickup: 7155000, minibus: 6680000, dg: 16462000 },
+  { no: 22, name: "KALIMANTAN SELATAN", reg: "Kalimantan", uh_lk: 380000, uh_dk: 150000, uh_diklat: 110000, h1: 4797000, h2: 3316000, h3: 1500000, h4: 746000, taksi: 174000, taksiNote: "Lampiran 29 Resmi", r4: 921000, bus_s: 2719000, bus_b: 3834000, sewa_es2: 14872000, pickup: 7124000, minibus: 6530000, dg: 15380000 },
+  { no: 23, name: "KALIMANTAN TIMUR", reg: "Kalimantan", uh_lk: 430000, uh_dk: 170000, uh_diklat: 130000, h1: 4000000, h2: 2342000, h3: 1507000, h4: 804000, taksi: 300000, taksiNote: "Lampiran 29 Resmi", r4: 1100000, bus_s: 3194000, bus_b: 4829000, sewa_es2: 14030000, pickup: 6763000, minibus: 7632000, dg: 16144000 },
+  { no: 24, name: "KALIMANTAN UTARA", reg: "Kalimantan", uh_lk: 430000, uh_dk: 170000, uh_diklat: 130000, h1: 4000000, h2: 2854000, h3: 1507000, h4: 904000, taksi: 211000, taksiNote: "Lampiran 29 Resmi", r4: 1188000, bus_s: 2713000, bus_b: 4829000, sewa_es2: 14030000, pickup: 6380000, minibus: 7632000, dg: 16144000 },
+  { no: 25, name: "SULAWESI UTARA", reg: "Sulawesi", uh_lk: 370000, uh_dk: 150000, uh_diklat: 110000, h1: 5264000, h2: 2290000, h3: 1270000, h4: 978000, taksi: 134000, taksiNote: "Lampiran 29 Resmi", r4: 1195000, bus_s: 2648000, bus_b: 4006000, sewa_es2: 15000000, pickup: 7350000, minibus: 7500000, dg: 16280000 },
+  { no: 26, name: "GORONTALO", reg: "Sulawesi", uh_lk: 370000, uh_dk: 150000, uh_diklat: 110000, h1: 4168000, h2: 3107000, h3: 1606000, h4: 955000, taksi: 256000, taksiNote: "Lampiran 29 Resmi", r4: 908000, bus_s: 2504000, bus_b: 4038000, sewa_es2: 15000000, pickup: 7280000, minibus: 7430000, dg: 16280000 },
+  { no: 27, name: "SULAWESI BARAT", reg: "Sulawesi", uh_lk: 410000, uh_dk: 160000, uh_diklat: 120000, h1: 4076000, h2: 3098000, h3: 1344000, h4: 704000, taksi: 283000, taksiNote: "Lampiran 29 Resmi", r4: 914000, bus_s: 3327000, bus_b: 3479000, sewa_es2: 13580000, pickup: 6150000, minibus: 6244000, dg: 15080000 },
+  { no: 28, name: "SULAWESI SELATAN", reg: "Sulawesi", uh_lk: 430000, uh_dk: 170000, uh_diklat: 130000, h1: 4820000, h2: 1938000, h3: 1423000, h4: 745000, taksi: 181000, taksiNote: "Lampiran 29 Resmi", r4: 938000, bus_s: 3385000, bus_b: 4293000, sewa_es2: 14395000, pickup: 6519000, minibus: 6244000, dg: 15985000 },
+  { no: 29, name: "SULAWESI TENGAH", reg: "Sulawesi", uh_lk: 370000, uh_dk: 150000, uh_diklat: 110000, h1: 2309000, h2: 2166000, h3: 1679000, h4: 951000, taksi: 149000, taksiNote: "Lampiran 29 Resmi", r4: 824000, bus_s: 2423000, bus_b: 4465000, sewa_es2: 14400000, pickup: 6750000, minibus: 6980000, dg: 15680000 },
+  { no: 30, name: "SULAWESI TENGGARA", reg: "Sulawesi", uh_lk: 380000, uh_dk: 150000, uh_diklat: 110000, h1: 3089000, h2: 2755000, h3: 1297000, h4: 786000, taksi: 154000, taksiNote: "Lampiran 29 Resmi", r4: 945000, bus_s: 2700000, bus_b: 5150000, sewa_es2: 14030000, pickup: 6900000, minibus: 6763000, dg: 15900000 },
+  { no: 31, name: "MALUKU", reg: "Maluku & Papua", uh_lk: 380000, uh_dk: 150000, uh_diklat: 110000, h1: 3467000, h2: 3240000, h3: 1059000, h4: 667000, taksi: 279000, taksiNote: "Lampiran 29 Resmi", r4: 1241000, bus_s: 3590000, bus_b: 4021000, sewa_es2: 15349000, pickup: 8180000, minibus: 6830000, dg: 17250000 },
+  { no: 32, name: "MALUKU UTARA", reg: "Maluku & Papua", uh_lk: 430000, uh_dk: 170000, uh_diklat: 130000, h1: 4612000, h2: 3843000, h3: 1160000, h4: 654000, taksi: 208000, taksiNote: "Lampiran 29 Resmi", r4: 1095000, bus_s: 3013000, bus_b: 4170000, sewa_es2: 14400000, pickup: 7880000, minibus: 7240000, dg: 16880000 },
+  { no: 33, name: "PAPUA", reg: "Maluku & Papua", uh_lk: 580000, uh_dk: 230000, uh_diklat: 170000, h1: 3859000, h2: 3318000, h3: 2521000, h4: 1038000, taksi: 462000, taksiNote: "Lampiran 29 Resmi", r4: 1204000, bus_s: 4082000, bus_b: 5248000, sewa_es2: 15741000, pickup: 8630000, minibus: 7632000, dg: 18688000 },
+  { no: 34, name: "PAPUA BARAT", reg: "Maluku & Papua", uh_lk: 480000, uh_dk: 190000, uh_diklat: 140000, h1: 3872000, h2: 3575000, h3: 2056000, h4: 967000, taksi: 228000, taksiNote: "Lampiran 29 Resmi", r4: 1171000, bus_s: 3499000, bus_b: 4547000, sewa_es2: 15667000, pickup: 8480000, minibus: 7558000, dg: 18370000 },
+  { no: 35, name: "PAPUA BARAT DAYA", reg: "Maluku & Papua", uh_lk: 480000, uh_dk: 190000, uh_diklat: 140000, h1: 3872000, h2: 3575000, h3: 2056000, h4: 967000, taksi: 228000, taksiNote: "Ref. Papua Barat / Riil", r4: 1171000, bus_s: 3499000, bus_b: 4547000, sewa_es2: 15667000, pickup: 8480000, minibus: 7558000, dg: 18370000 },
+  { no: 36, name: "PAPUA TENGAH", reg: "Maluku & Papua", uh_lk: 580000, uh_dk: 230000, uh_diklat: 170000, h1: 3859000, h2: 3318000, h3: 2521000, h4: 1038000, taksi: 462000, taksiNote: "Ref. Papua / Riil", r4: 1204000, bus_s: 4082000, bus_b: 5248000, sewa_es2: 15741000, pickup: 8630000, minibus: 7632000, dg: 18688000 },
+  { no: 37, name: "PAPUA SELATAN", reg: "Maluku & Papua", uh_lk: 580000, uh_dk: 230000, uh_diklat: 170000, h1: 5673000, h2: 4877000, h3: 3706000, h4: 1526000, taksi: 462000, taksiNote: "Ref. Papua / Riil", r4: 1638000, bus_s: 6001000, bus_b: 7715000, sewa_es2: 15741000, pickup: 8630000, minibus: 7632000, dg: 18688000 },
+  { no: 38, name: "PAPUA PEGUNUNGAN", reg: "Maluku & Papua", uh_lk: 580000, uh_dk: 230000, uh_diklat: 170000, h1: 5711000, h2: 4911000, h3: 3731000, h4: 1536000, taksi: 462000, taksiNote: "Ref. Papua / Riil", r4: 1649000, bus_s: 6041000, bus_b: 7767000, sewa_es2: 15741000, pickup: 8630000, minibus: 7632000, dg: 18688000 }
+];
+
+const JKT_SEKITAR = [
+  { no: 1, asal: "Jakarta", tujuan: "Kota Bekasi", tarif: 256000 },
+  { no: 2, asal: "Jakarta", tujuan: "Kabupaten Bekasi", tarif: 256000 },
+  { no: 3, asal: "Jakarta", tujuan: "Kabupaten Bogor", tarif: 270000 },
+  { no: 4, asal: "Jakarta", tujuan: "Kota Bogor", tarif: 270000 },
+  { no: 5, asal: "Jakarta", tujuan: "Kota Depok", tarif: 248000 },
+  { no: 6, asal: "Jakarta", tujuan: "Kota Tangerang", tarif: 258000 },
+  { no: 7, asal: "Jakarta", tujuan: "Kota Tangerang Selatan", tarif: 258000 },
+  { no: 8, asal: "Jakarta", tujuan: "Kabupaten Tangerang", tarif: 279000 },
+  { no: 9, asal: "Jakarta", tujuan: "Kepulauan Seribu", tarif: 386000 }
+];
+const IBU_RAW = [
+  ["ACEH", "Banda Aceh", "Kab. Aceh Barat", 275000],
+  ["ACEH", "Banda Aceh", "Kab. Aceh Barat Daya", 298000],
+  ["ACEH", "Banda Aceh", "Kab. Aceh Besar", 183000],
+  ["ACEH", "Banda Aceh", "Kab. Aceh Jaya", 238000],
+  ["ACEH", "Banda Aceh", "Kab. Aceh Selatan", 325000],
+  ["ACEH", "Banda Aceh", "Kab. Aceh Singkil", 420000],
+  ["ACEH", "Banda Aceh", "Kab. Aceh Tamiang", 315000],
+  ["ACEH", "Banda Aceh", "Kab. Aceh Tengah", 293000],
+  ["ACEH", "Banda Aceh", "Kab. Aceh Tenggara", 460000],
+  ["ACEH", "Banda Aceh", "Kab. Aceh Timur", 289000],
+  ["ACEH", "Banda Aceh", "Kab. Aceh Utara", 270000],
+  ["ACEH", "Banda Aceh", "Kab. Bener Meriah", 278000],
+  ["ACEH", "Banda Aceh", "Kab. Bireuen", 220000],
+  ["ACEH", "Banda Aceh", "Kab. Gayo Lues", 370000],
+  ["ACEH", "Banda Aceh", "Kab. Nagan Raya", 275000],
+  ["ACEH", "Banda Aceh", "Kab. Pidie", 190000],
+  ["ACEH", "Banda Aceh", "Kab. Pidie Jaya", 205000],
+  ["ACEH", "Banda Aceh", "Kab. Langsa", 301000],
+  ["ACEH", "Banda Aceh", "Kab. Lhokseumawe", 240000],
+  ["ACEH", "Banda Aceh", "Kab. Subulussalam", 400000],
+  ["SUMATRA UTARA", "Medan", "Kab. Asahan", 259000],
+  ["SUMATRA UTARA", "Medan", "Kab. Batubara", 225000],
+  ["SUMATRA UTARA", "Medan", "Kab. Dairi", 270000],
+  ["SUMATRA UTARA", "Medan", "Kab. Deli Serdang", 186000],
+  ["SUMATRA UTARA", "Medan", "Kab. Humbang Hasundutan", 300000],
+  ["SUMATRA UTARA", "Medan", "Kab. Karo", 200000],
+  ["SUMATRA UTARA", "Medan", "Kab. Labuhan Batu", 287000],
+  ["SUMATRA UTARA", "Medan", "Kab. Labuhan Batu Selatan", 360000],
+  ["SUMATRA UTARA", "Medan", "Kab. Labuhan Batu Utara", 300000],
+  ["SUMATRA UTARA", "Medan", "Kab. Langkat", 186000],
+  ["SUMATRA UTARA", "Medan", "Kab. Mandaling Natal", 420000],
+  ["SUMATRA UTARA", "Medan", "Kab. Padang Lawas", 420000],
+  ["SUMATRA UTARA", "Medan", "Kab. Padang Lawas Utara", 420000],
+  ["SUMATRA UTARA", "Medan", "Kab. Pakpak Bharat", 300000],
+  ["SUMATRA UTARA", "Medan", "Kab. Samosir", 330000],
+  ["SUMATRA UTARA", "Medan", "Kab. Serdang Bedagai", 200000],
+  ["SUMATRA UTARA", "Medan", "Kab. Simalungun", 264000],
+  ["SUMATRA UTARA", "Medan", "Kab. Tapanuli Selatan", 328000],
+  ["SUMATRA UTARA", "Medan", "Kab. Tapanuli Tengah", 345000],
+  ["SUMATRA UTARA", "Medan", "Kab. Tapanuli Utara", 330000],
+  ["SUMATRA UTARA", "Medan", "Kab. Toba Samosir", 300000],
+  ["SUMATRA UTARA", "Medan", "Kab. Binjai", 180000],
+  ["SUMATRA UTARA", "Medan", "Kab. Pematang Siantar", 225000],
+  ["SUMATRA UTARA", "Medan", "Kab. Sibolga", 345000],
+  ["SUMATRA UTARA", "Medan", "Kab. Tanjung Balai", 285000],
+  ["SUMATRA UTARA", "Medan", "Kab. Tebing Tinggi", 203000],
+  ["RIAU", "Pekanbaru", "Kab. Indragiri Hilir", 380000],
+  ["RIAU", "Pekanbaru", "Kab. Indragiri Hulu", 315000],
+  ["RIAU", "Pekanbaru", "Kab. Kampar", 200000],
+  ["RIAU", "Pekanbaru", "Kab. Kuantan Singingi", 300000],
+  ["RIAU", "Pekanbaru", "Kab. Pelalawan", 225000],
+  ["RIAU", "Pekanbaru", "Kab. Rokan Hilir", 350000],
+  ["RIAU", "Pekanbaru", "Kab. Rokan Hulu", 322000],
+  ["RIAU", "Pekanbaru", "Kab. Siak", 350000],
+  ["RIAU", "Pekanbaru", "Kota Dumai", 400000],
+  ["KEPULAUAN RIAU", "Tanjung Pinang", "Kab. Bintan", 185000],
+  ["JAMBI", "Jambi", "Kab. Batanghari", 175000],
+  ["JAMBI", "Jambi", "Kab. Bungo", 270000],
+  ["JAMBI", "Jambi", "Kab. Kerinci", 325000],
+  ["JAMBI", "Jambi", "Kab. Marangen", 260000],
+  ["JAMBI", "Jambi", "Kab. Muaro Jambi", 170000],
+  ["JAMBI", "Jambi", "Kab. Sarolangun", 241000],
+  ["JAMBI", "Jambi", "Kab. Tanjung Jabung Barat", 225000],
+  ["JAMBI", "Jambi", "Kab. Tanjung Jabung Timur", 190000],
+  ["JAMBI", "Jambi", "Kab. Tebo", 250000],
+  ["JAMBI", "Jambi", "Kab. Sungai Penuh", 308000],
+  ["SUMATRA BARAT", "Padang", "Kab. Agam", 225000],
+  ["SUMATRA BARAT", "Padang", "Kab. Dharmasraya", 250000],
+  ["SUMATRA BARAT", "Padang", "Kab. Lima Puluh Kota", 225000],
+  ["SUMATRA BARAT", "Padang", "Kab. Padang Pariaman", 205000],
+  ["SUMATRA BARAT", "Padang", "Kab. Pasaman", 250000],
+  ["SUMATRA BARAT", "Padang", "Kab. Pasaman Barat", 250000],
+  ["SUMATRA BARAT", "Padang", "Kab. Pesisir Selatan", 205000],
+  ["SUMATRA BARAT", "Padang", "Kab. Sijunjung", 225000],
+  ["SUMATRA BARAT", "Padang", "Kab. Solok", 210000],
+  ["SUMATRA BARAT", "Padang", "Kab. Solok Selatan", 250000],
+  ["SUMATRA BARAT", "Padang", "Kab. Tanah Datar", 220000],
+  ["SUMATRA BARAT", "Padang", "Kota Bukit Tinggi", 215000],
+  ["SUMATRA BARAT", "Padang", "Kota Padang Panjang", 210000],
+  ["SUMATRA BARAT", "Padang", "Kota Pariaman", 200000],
+  ["SUMATRA BARAT", "Padang", "Kota Payahkumbuh", 225000],
+  ["SUMATRA BARAT", "Padang", "Kota Sawahlunto", 215000],
+  ["SUMATRA BARAT", "Padang", "Kota Solok", 210000],
+  ["SUMATRA SELATAN", "Palembang", "Kab. Banyuasin", 203000],
+  ["SUMATRA SELATAN", "Palembang", "Kab. Empat Lawang", 315000],
+  ["SUMATRA SELATAN", "Palembang", "Kab. Lahat", 250000],
+  ["SUMATRA SELATAN", "Palembang", "Kab. Muara Enim", 235000],
+  ["SUMATRA SELATAN", "Palembang", "Kab. Musi Banyuasin", 235000],
+  ["SUMATRA SELATAN", "Palembang", "Kab. Musi Rawas", 320000],
+  ["SUMATRA SELATAN", "Palembang", "Kab. Musi Rawas Utara", 325000],
+  ["SUMATRA SELATAN", "Palembang", "Kab. Ogan Ilir", 205000],
+  ["SUMATRA SELATAN", "Palembang", "Kab. Ogan Komering Ilir", 205000],
+  ["SUMATRA SELATAN", "Palembang", "Kab. Ogan Komering Ulu", 248000],
+  ["SUMATRA SELATAN", "Palembang", "Kab. Ogan Komering Ulu Selatan", 250000],
+  ["SUMATRA SELATAN", "Palembang", "Kab. Ogan Komering Ulu Timur", 245000],
+  ["SUMATRA SELATAN", "Palembang", "Kab. Pali", 265000],
+  ["SUMATRA SELATAN", "Palembang", "Kab. Lubuk Lingau", 290000],
+  ["SUMATRA SELATAN", "Palembang", "Kab. Pagar Alam", 280000],
+  ["SUMATRA SELATAN", "Palembang", "Kab. Prabumulih", 205000],
+  ["LAMPUNG", "Bandar Lampung", "Kab. Lampung Barat", 270000],
+  ["LAMPUNG", "Bandar Lampung", "Kab. Lampung Selatan", 234000],
+  ["LAMPUNG", "Bandar Lampung", "Kab. Lampung Selatan", 246000],
+  ["LAMPUNG", "Bandar Lampung", "Kab. Lampung Timur", 246000],
+  ["LAMPUNG", "Bandar Lampung", "Kab. Lampung Utara", 252000],
+  ["LAMPUNG", "Bandar Lampung", "Kab. Mesuji", 276000],
+  ["LAMPUNG", "Bandar Lampung", "Kab. Pesawaran", 216000],
+  ["LAMPUNG", "Bandar Lampung", "Kab. Pesisir Barat", 270000],
+  ["LAMPUNG", "Bandar Lampung", "Kab. Pringsewu", 222000],
+  ["LAMPUNG", "Bandar Lampung", "Kab. Tanggamus", 240000],
+  ["LAMPUNG", "Bandar Lampung", "Kab. Tulang Bawang", 252000],
+  ["LAMPUNG", "Bandar Lampung", "Kab. Tulang Bawang Barat", 267000],
+  ["LAMPUNG", "Bandar Lampung", "Kab. Way Kanan", 270000],
+  ["LAMPUNG", "Bandar Lampung", "Kota Metro", 234000],
+  ["BENGKULU", "Bengkulu", "Kab. Bengkulu Selatan", 344000],
+  ["BENGKULU", "Bengkulu", "Kab. Bengkulu Tengah", 232000],
+  ["BENGKULU", "Bengkulu", "Kab. Kengkulu Utara", 313000],
+  ["BENGKULU", "Bengkulu", "Kab. Kaur", 385000],
+  ["BENGKULU", "Bengkulu", "Kab. Kepahiang", 298000],
+  ["BENGKULU", "Bengkulu", "Kab. Lebong", 375000],
+  ["BENGKULU", "Bengkulu", "Kab. Mukomuko", 423000],
+  ["BENGKULU", "Bengkulu", "Kab. Rejang Lebong", 313000],
+  ["BENGKULU", "Bengkulu", "Kab. Seluma", 282000],
+  ["BANGKA BELITUNG", "Pangkalpinang", "Kab. Bangka", 250000],
+  ["BANGKA BELITUNG", "Pangkalpinang", "Kab. Bangka Barat", 275000],
+  ["BANGKA BELITUNG", "Pangkalpinang", "Kab. Bangka Selatan", 275000],
+  ["BANGKA BELITUNG", "Pangkalpinang", "Kab. Bangka Tengah", 250000],
+  ["BANTEN", "Serang", "Kab. Lebak", 208000],
+  ["BANTEN", "Serang", "Kab. Pandeglang", 138000],
+  ["BANTEN", "Serang", "Kab. Serang", 160000],
+  ["BANTEN", "Serang", "Kab. Tangerang", 254000],
+  ["BANTEN", "Serang", "Kab. Cilegon", 160000],
+  ["BANTEN", "Serang", "Kota Tangerang", 313000],
+  ["BANTEN", "Serang", "Kota Tangerang Selatan", 347000],
+  ["JAWA BARAT", "Bandung", "Kab. Bandung", 183000],
+  ["JAWA BARAT", "Bandung", "Kab. Bandung Barat", 275000],
+  ["JAWA BARAT", "Bandung", "Kab. Bekasi", 265000],
+  ["JAWA BARAT", "Bandung", "Kab. Bogor", 275000],
+  ["JAWA BARAT", "Bandung", "Kab. Ciamis", 245000],
+  ["JAWA BARAT", "Bandung", "Kab. Cianjur", 215000],
+  ["JAWA BARAT", "Bandung", "Kab. Cirebon", 280000],
+  ["JAWA BARAT", "Bandung", "Kab. Garut", 243000],
+  ["JAWA BARAT", "Bandung", "Kab. Indramayu", 275000],
+  ["JAWA BARAT", "Bandung", "Kab. Karawang", 248000],
+  ["JAWA BARAT", "Bandung", "Kab. Kuningan", 275000],
+  ["JAWA BARAT", "Bandung", "Kab. Majalengka", 235000],
+  ["JAWA BARAT", "Bandung", "Kab. Pangandaran", 283000],
+  ["JAWA BARAT", "Bandung", "Kab. Purwakarta", 218000],
+  ["JAWA BARAT", "Bandung", "Kab. Subang", 208000],
+  ["JAWA BARAT", "Bandung", "Kab. Sukabumi", 245000],
+  ["JAWA BARAT", "Bandung", "Kab. Sumedang", 230000],
+  ["JAWA BARAT", "Bandung", "Kab. Tasikmalaya", 245000],
+  ["JAWA BARAT", "Bandung", "Kota Banjar", 283000],
+  ["JAWA BARAT", "Bandung", "Kota Bekasi", 265000],
+  ["JAWA BARAT", "Bandung", "Kota Bogor", 285000],
+  ["JAWA BARAT", "Bandung", "Kota Cimahi", 168000],
+  ["JAWA BARAT", "Bandung", "Kota Cirebon", 270000],
+  ["JAWA BARAT", "Bandung", "Kota Depok", 275000],
+  ["JAWA BARAT", "Bandung", "Kota Sukabumi", 226000],
+  ["JAWA BARAT", "Bandung", "Kota Tasikmalaya", 245000],
+  ["JAWA TENGAH", "Semarang", "Kab. Banjarnegara", 260000],
+  ["JAWA TENGAH", "Semarang", "Kab. Banjyumas", 257000],
+  ["JAWA TENGAH", "Semarang", "Kab. Batang", 240000],
+  ["JAWA TENGAH", "Semarang", "Kab. Blora", 270000],
+  ["JAWA TENGAH", "Semarang", "Kab. Boyolali", 240000],
+  ["JAWA TENGAH", "Semarang", "Kab. Brebes", 263000],
+  ["JAWA TENGAH", "Semarang", "Kab. Cilacap", 280000],
+  ["JAWA TENGAH", "Semarang", "Kab. Demak", 230000],
+  ["JAWA TENGAH", "Semarang", "Kab. Grobogan", 235000],
+  ["JAWA TENGAH", "Semarang", "Kab. Jepara", 240000],
+  ["JAWA TENGAH", "Semarang", "Kab. Karanganyar", 250000],
+  ["JAWA TENGAH", "Semarang", "Kab. Kebumen", 260000],
+  ["JAWA TENGAH", "Semarang", "Kab. Kendal", 230000],
+  ["JAWA TENGAH", "Semarang", "Kab. Klaten", 250000],
+  ["JAWA TENGAH", "Semarang", "Kab. Kudus", 235000],
+  ["JAWA TENGAH", "Semarang", "Kab. Magelang", 240000],
+  ["JAWA TENGAH", "Semarang", "Kab. Pati", 240000],
+  ["JAWA TENGAH", "Semarang", "Kab. Pekalongan", 245000],
+  ["JAWA TENGAH", "Semarang", "Kab. Pemalang", 250000],
+  ["JAWA TENGAH", "Semarang", "Kab. Purbalingga", 270000],
+  ["JAWA TENGAH", "Semarang", "Kab. Purworejo", 250000],
+  ["JAWA TENGAH", "Semarang", "Kab. Rembang", 250000],
+  ["JAWA TENGAH", "Semarang", "Kab. Semarang", 230000],
+  ["JAWA TENGAH", "Semarang", "Kab. Sragen", 250000],
+  ["JAWA TENGAH", "Semarang", "Kab. Sukoharjo", 250000],
+  ["JAWA TENGAH", "Semarang", "Kab. Tegal", 260000],
+  ["JAWA TENGAH", "Semarang", "Kab. Temanggung", 240000],
+  ["JAWA TENGAH", "Semarang", "Kab. Wonogiri", 250000],
+  ["JAWA TENGAH", "Semarang", "Kab. Wonosobo", 250000],
+  ["JAWA TENGAH", "Semarang", "Kota Magelang", 240000],
+  ["JAWA TENGAH", "Semarang", "Kota Pekalongan", 245000],
+  ["JAWA TENGAH", "Semarang", "Kota Salatiga", 235000],
+  ["JAWA TENGAH", "Semarang", "Kota Surakarta", 245000],
+  ["JAWA TENGAH", "Semarang", "Kota Tegal", 260000],
+  ["D.I. YOGYAKARTA", "Yogyakarta", "Kab. Bantul", 250000],
+  ["D.I. YOGYAKARTA", "Yogyakarta", "Kab. Gunung Kidul", 350000],
+  ["D.I. YOGYAKARTA", "Yogyakarta", "Kab. Kulon Progo", 350000],
+  ["D.I. YOGYAKARTA", "Yogyakarta", "Kab. Sleman", 200000],
+  ["JAWA TIMUR", "Surabaya", "Kab. Bangkalan", 225000],
+  ["JAWA TIMUR", "Surabaya", "Kab. Banyuwangi", 285000],
+  ["JAWA TIMUR", "Surabaya", "Kab. Blitar", 255000],
+  ["JAWA TIMUR", "Surabaya", "Kab. Bojonegoro", 225000],
+  ["JAWA TIMUR", "Surabaya", "Kab. Bondowoso", 255000],
+  ["JAWA TIMUR", "Surabaya", "Kab. Gresik", 225000],
+  ["JAWA TIMUR", "Surabaya", "Kab. Jember", 261000],
+  ["JAWA TIMUR", "Surabaya", "Kab. Jombang", 235000],
+  ["JAWA TIMUR", "Surabaya", "Kab. Kediri", 235000],
+  ["JAWA TIMUR", "Surabaya", "Kab. Lamongan", 225000],
+  ["JAWA TIMUR", "Surabaya", "Kab. Lumajang", 261000],
+  ["JAWA TIMUR", "Surabaya", "Kab. Madiun", 245000],
+  ["JAWA TIMUR", "Surabaya", "Kab. Magetan", 253000],
+  ["JAWA TIMUR", "Surabaya", "Kab. Magetan", 228000],
+  ["JAWA TIMUR", "Surabaya", "Kab. Magetan", 253000],
+  ["JAWA TIMUR", "Surabaya", "Kab. Nganjuk", 245000],
+  ["JAWA TIMUR", "Surabaya", "Kab. Ngawi", 253000],
+  ["JAWA TIMUR", "Surabaya", "Kab. Pacitan", 285000],
+  ["JAWA TIMUR", "Surabaya", "Kab. Pamekasan", 243000],
+  ["JAWA TIMUR", "Surabaya", "Kab. Pasuruan", 228000],
+  ["JAWA TIMUR", "Surabaya", "Kab. Ponorogo", 255000],
+  ["JAWA TIMUR", "Surabaya", "Kab. Probolinggo", 228000],
+  ["JAWA TIMUR", "Surabaya", "Kab. Sampang", 235000],
+  ["JAWA TIMUR", "Surabaya", "Kab. Sidoarjo", 240000],
+  ["JAWA TIMUR", "Surabaya", "Kab. Situbondo", 255000],
+  ["JAWA TIMUR", "Surabaya", "Kab. Sumenep", 255000],
+  ["JAWA TIMUR", "Surabaya", "Kab. Trenggalek", 245000],
+  ["JAWA TIMUR", "Surabaya", "Kab. Tuban", 245000],
+  ["JAWA TIMUR", "Surabaya", "Kab. Tulungagung", 245000],
+  ["JAWA TIMUR", "Surabaya", "Kota Batu", 242000],
+  ["JAWA TIMUR", "Surabaya", "Kota Blitar", 255000],
+  ["JAWA TIMUR", "Surabaya", "Kota Bojonegoro", 225000],
+  ["JAWA TIMUR", "Surabaya", "Kota Kediri", 235000],
+  ["JAWA TIMUR", "Surabaya", "Kota Madiun", 245000],
+  ["JAWA TIMUR", "Surabaya", "Kota Malang", 228000],
+  ["JAWA TIMUR", "Surabaya", "Kota Mojokerto", 225000],
+  ["JAWA TIMUR", "Surabaya", "Kota Probolinggo", 228000],
+  ["BALI", "Denpasar", "Kab. Badung", 188000],
+  ["BALI", "Denpasar", "Kab. Bangli", 225000],
+  ["BALI", "Denpasar", "Kab. Buleleng", 265000],
+  ["BALI", "Denpasar", "Kab. Gianyar", 225000],
+  ["BALI", "Denpasar", "Kab. Jembrana", 270000],
+  ["BALI", "Denpasar", "Kab. Karangasem", 263000],
+  ["BALI", "Denpasar", "Kab. Tabanan", 225000],
+  ["BALI", "Denpasar", "Kab. Klungkung", 225000],
+  ["NUSA TENGGARA BARAT", "Mataram", "Kab. Lombok Barat", 325000],
+  ["NUSA TENGGARA BARAT", "Mataram", "Kab. Lombok Tengah", 450000],
+  ["NUSA TENGGARA BARAT", "Mataram", "Kab. Lombok Timur", 350000],
+  ["NUSA TENGGARA BARAT", "Mataram", "Kab. Lombok Utara", 450000],
+  ["NUSA TENGGARA BARAT", "Mataram", "Kab. Sumbawa", 600000],
+  ["NUSA TENGGARA BARAT", "Mataram", "Kab. Sumbawa Barat", 650000],
+  ["NUSA TENGGARA BARAT", "Mataram", "Kab. Bima", 750000],
+  ["NUSA TENGGARA BARAT", "Mataram", "Kab. Dompu", 700000],
+  ["NUSA TENGGARA BARAT", "Mataram", "Kota Bima", 750000],
+  ["NUSA TENGGARA TIMUR", "Kupang", "Kab. Belu", 325000],
+  ["NUSA TENGGARA TIMUR", "Kupang", "Kab. Kupang", 175000],
+  ["NUSA TENGGARA TIMUR", "Kupang", "Kab. Timor Tengah Selatan", 218000],
+  ["NUSA TENGGARA TIMUR", "Kupang", "Kab. Timor Tengah Utara", 275000],
+  ["KALIMANTAN BARAT", "Pontianak", "Kab. Bengkayang", 270000],
+  ["KALIMANTAN BARAT", "Pontianak", "Kab. Kapuas Hulu", 550000],
+  ["KALIMANTAN BARAT", "Pontianak", "Kab. Kayong Utara", 550000],
+  ["KALIMANTAN BARAT", "Pontianak", "Kab. Ketapang", 550000],
+  ["KALIMANTAN BARAT", "Pontianak", "Kab. Kubu Raya", 185000],
+  ["KALIMANTAN BARAT", "Pontianak", "Kab. Landak", 270000],
+  ["KALIMANTAN BARAT", "Pontianak", "Kab. Melawi", 430000],
+  ["KALIMANTAN BARAT", "Pontianak", "Kab. Mempawah", 230000],
+  ["KALIMANTAN BARAT", "Pontianak", "Kab. Sambas", 300000],
+  ["KALIMANTAN BARAT", "Pontianak", "Kab. Sanggau", 303000],
+  ["KALIMANTAN BARAT", "Pontianak", "Kab. Sekadau", 343000],
+  ["KALIMANTAN BARAT", "Pontianak", "Kab. Sintang", 392000],
+  ["KALIMANTAN BARAT", "Pontianak", "Kab. Singkawang", 257000],
+  ["KALIMANTAN TENGAH", "Palangkaraya", "Kab. Barito Selatan", 290000],
+  ["KALIMANTAN TENGAH", "Palangkaraya", "Kab. Barito Timur", 333000],
+  ["KALIMANTAN TENGAH", "Palangkaraya", "Kab. Barito Utara", 425000],
+  ["KALIMANTAN TENGAH", "Palangkaraya", "Kab. Gunung Mas", 300000],
+  ["KALIMANTAN TENGAH", "Palangkaraya", "Kab. Kapuas", 275000],
+  ["KALIMANTAN TENGAH", "Palangkaraya", "Kab. Katingan", 250000],
+  ["KALIMANTAN TENGAH", "Palangkaraya", "Kab. Kota Waringin Barat", 425000],
+  ["KALIMANTAN TENGAH", "Palangkaraya", "Kab. Kota Waringin Timur", 300000],
+  ["KALIMANTAN TENGAH", "Palangkaraya", "Kab. Lamandau", 525000],
+  ["KALIMANTAN TENGAH", "Palangkaraya", "Kab. Murung Raya", 448000],
+  ["KALIMANTAN TENGAH", "Palangkaraya", "Kab. Pulau Pisau", 250000],
+  ["KALIMANTAN TENGAH", "Palangkaraya", "Kab. Seruyan", 328000],
+  ["KALIMANTAN TENGAH", "Palangkaraya", "Kab. Sukamara", 525000],
+  ["KALIMANTAN SELATAN", "Banjarmasin", "Kab. Balangan", 230000],
+  ["KALIMANTAN SELATAN", "Banjarmasin", "Kab. Banjar", 170000],
+  ["KALIMANTAN SELATAN", "Banjarmasin", "Kab. Barito Kuala", 200000],
+  ["KALIMANTAN SELATAN", "Banjarmasin", "Kab. Hulu Sungai Selatan", 200000],
+  ["KALIMANTAN SELATAN", "Banjarmasin", "Kab. Hulu Sungai Tengah", 212000],
+  ["KALIMANTAN SELATAN", "Banjarmasin", "Kab. Hulu Sungai Utara", 218000],
+  ["KALIMANTAN SELATAN", "Banjarmasin", "Kab. Kota Baru", 290000],
+  ["KALIMANTAN SELATAN", "Banjarmasin", "Kab. Tabalong", 234000],
+  ["KALIMANTAN SELATAN", "Banjarmasin", "Kab. Tanah Bumbu", 300000],
+  ["KALIMANTAN SELATAN", "Banjarmasin", "Kab. Tanah Laut", 200000],
+  ["KALIMANTAN SELATAN", "Banjarmasin", "Kab. Tapin", 189000],
+  ["KALIMANTAN SELATAN", "Banjarmasin", "Kota Banjarbaru", 225000],
+  ["KALIMANTAN TIMUR", "Samarinda", "Kab. Kutai Barat", 1500000],
+  ["KALIMANTAN TIMUR", "Samarinda", "Kab. Kutai Kartanegara", 500000],
+  ["KALIMANTAN TIMUR", "Samarinda", "Kab. Kutai Timur", 1350000],
+  ["KALIMANTAN TIMUR", "Samarinda", "Kab. Paser", 1650000],
+  ["KALIMANTAN TIMUR", "Samarinda", "Kab. Penajam Paser Utara", 650000],
+  ["KALIMANTAN TIMUR", "Samarinda", "Kota Balikpapan", 550000],
+  ["KALIMANTAN TIMUR", "Samarinda", "Kota Bontang", 600000],
+  ["SULAWESI UTARA", "Manado", "Kab. Bolaang Mangondow", 250000],
+  ["SULAWESI UTARA", "Manado", "Kab. Bolaang Mangondow Selatan", 275000],
+  ["SULAWESI UTARA", "Manado", "Kab. Bolaang Mangondow Timur", 250000],
+  ["SULAWESI UTARA", "Manado", "Kab. Bolaang Mangondow Utara", 300000],
+  ["SULAWESI UTARA", "Manado", "Kab. Minahasa", 180000],
+  ["SULAWESI UTARA", "Manado", "Kab. Minahasa Selatan", 180000],
+  ["SULAWESI UTARA", "Manado", "Kab. Minahasa Tenggara", 200000],
+  ["SULAWESI UTARA", "Manado", "Kab. Minahasa Utara", 175000],
+  ["SULAWESI UTARA", "Manado", "Kab. Minahasa Utara", 175000],
+  ["SULAWESI UTARA", "Manado", "Kota Kotamobagu", 250000],
+  ["SULAWESI UTARA", "Manado", "Kota Tumohon", 170000],
+  ["GORONTALO", "Gorontalo", "Kab. Boalemo", 400000],
+  ["GORONTALO", "Gorontalo", "Kab. Gorontalo", 300000],
+  ["GORONTALO", "Gorontalo", "Kab. Gorontalo Utara", 350000],
+  ["GORONTALO", "Gorontalo", "Kab. Pahuwato", 650000],
+  ["SULAWESI BARAT", "Mamuju", "Kab. Majene", 240000],
+  ["SULAWESI BARAT", "Mamuju", "Kab. Mamasa", 359000],
+  ["SULAWESI BARAT", "Mamuju", "Kab. Mamuju Tengah", 200000],
+  ["SULAWESI BARAT", "Mamuju", "Kab. Mamuju Utara", 270000],
+  ["SULAWESI BARAT", "Mamuju", "Kab. Polewali Mandar", 260000],
+  ["SULAWESI SELATAN", "Makassar", "Kab. Bantaeng", 235000],
+  ["SULAWESI SELATAN", "Makassar", "Kab. Barru", 210000],
+  ["SULAWESI SELATAN", "Makassar", "Kab. Bone", 240000],
+  ["SULAWESI SELATAN", "Makassar", "Kab. Bulukumba", 240000],
+  ["SULAWESI SELATAN", "Makassar", "Kab. Enrekang", 250000],
+  ["SULAWESI SELATAN", "Makassar", "Kab. Gowa", 175000],
+  ["SULAWESI SELATAN", "Makassar", "Kab. Jeneponto", 230000],
+  ["SULAWESI SELATAN", "Makassar", "Kab. Luwu", 350000],
+  ["SULAWESI SELATAN", "Makassar", "Kab. Luwu Timur", 375000],
+  ["SULAWESI SELATAN", "Makassar", "Kab. Luwu Utara", 365000],
+  ["SULAWESI SELATAN", "Makassar", "Kab. Maros", 170000],
+  ["SULAWESI SELATAN", "Makassar", "Kab. Pinrang", 230000],
+  ["SULAWESI SELATAN", "Makassar", "Kab. Sidenreng Rappang", 230000],
+  ["SULAWESI SELATAN", "Makassar", "Kab. Sinjai", 235000],
+  ["SULAWESI SELATAN", "Makassar", "Kab. Soppeng", 235000],
+  ["SULAWESI SELATAN", "Makassar", "Kab. Takalar", 190000],
+  ["SULAWESI SELATAN", "Makassar", "Kab. Tanatoraja", 350000],
+  ["SULAWESI SELATAN", "Makassar", "Kab. Toraja Utara", 350000],
+  ["SULAWESI SELATAN", "Makassar", "Kab. Wajo", 230000],
+  ["SULAWESI SELATAN", "Makassar", "Kab. Palopo", 350000],
+  ["SULAWESI SELATAN", "Makassar", "Kab. Pare-Pare", 225000],
+  ["SULAWESI TENGAH", "Palu", "Kab. Luwuk", 400000],
+  ["SULAWESI TENGAH", "Palu", "Kab. Buol", 472000],
+  ["SULAWESI TENGAH", "Palu", "Kab. Donggala", 130000],
+  ["SULAWESI TENGAH", "Palu", "Kab. Morowali", 400000],
+  ["SULAWESI TENGAH", "Palu", "Kab. Morowali Utara", 400000],
+  ["SULAWESI TENGAH", "Palu", "Kab. Parigi Moutong", 250000],
+  ["SULAWESI TENGAH", "Palu", "Kab. Poso", 280000],
+  ["SULAWESI TENGAH", "Palu", "Kab. Sigi", 219000],
+  ["SULAWESI TENGAH", "Palu", "Kab. Tojouna-Una", 350000],
+  ["SULAWESI TENGAH", "Palu", "Kab. Toli-Toli", 412000],
+  ["SULAWESI TENGGARA", "Kendari", "Kab. Bombana", 355000],
+  ["SULAWESI TENGGARA", "Kendari", "Kab. Kolaka", 370000],
+  ["SULAWESI TENGGARA", "Kendari", "Kab. Kolaka Timur", 300000],
+  ["SULAWESI TENGGARA", "Kendari", "Kab. Kolaka Utara", 425000],
+  ["SULAWESI TENGGARA", "Kendari", "Kab. Konawe", 300000],
+  ["SULAWESI TENGGARA", "Kendari", "Kab. Konawe Selatan", 305000],
+  ["SULAWESI TENGGARA", "Kendari", "Kab. Konawe Utara", 300000],
+  ["MALUKU UTARA", "Sofifi", "Kab. Halmahera Barat", 850000],
+  ["MALUKU UTARA", "Sofifi", "Kab. Halmahera Tengah", 1000000],
+  ["MALUKU UTARA", "Sofifi", "Kab. Halmahera Timur", 1250000],
+  ["MALUKU UTARA", "Sofifi", "Kab. Halmahera Utara", 900000],
+  ["PAPUA", "Jayapura", "Kab. Jayapura", 600000],
+  ["PAPUA", "Jayapura", "Kab. Keerom", 900000],
+  ["PAPUA", "Jayapura", "Kab. Sarmi", 2700000],
+  ["PAPUA BARAT", "Manokwari", "Kab. Teluk Bintuni", 900000],
+  ["PAPUA BARAT", "Manokwari", "Kab. Manokwari Selatan", 750000],
+  ["PAPUA BARAT", "Manokwari", "Kab. Pegunungan Arfak", 2650000]
+];
+
+/* ===== Konfigurasi ===== */
+const REGIONS = ["Sumatra","Jawa","Bali & Nusa Tenggara","Kalimantan","Sulawesi","Maluku & Papua"];
+const GOL = { h1:"Pejabat Negara / Es. I", h2:"Pej. Negara Lain / Es. II", h3:"Pejabat Es. III / Gol. IV", h4:"Pejabat Es. IV / Gol. III–I" };
+const TAB_NAMES = { home:"Ringkasan", uh:"Uang Harian", hotel:"Hotel", taksi:"Taksi Bandara", sewa:"Sewa Mobil", ibu:"Transport Ibukota Provinsi", jkt:"Transport Jakarta Sekitar" };
+
+// kata kunci tambahan agar pencarian "surabaya", "jabar", "NTT", dst. ketemu
+const ALIAS = {
+  "ACEH":"nad, banda aceh", "SUMATRA UTARA":"sumut, medan", "RIAU":"pekanbaru", "KEPULAUAN RIAU":"kepri, batam, tanjungpinang",
+  "JAMBI":"", "SUMATRA BARAT":"sumbar, padang", "SUMATRA SELATAN":"sumsel, palembang", "LAMPUNG":"bandar lampung",
+  "BENGKULU":"", "BANGKA BELITUNG":"babel, pangkalpinang", "BANTEN":"serang, tangerang, cilegon",
+  "JAWA BARAT":"jabar, bandung, bogor, bekasi, depok, cirebon", "DKI JAKARTA":"jakarta, dki",
+  "JAWA TENGAH":"jateng, semarang, solo, surakarta", "D.I. YOGYAKARTA":"diy, jogja, yogya, yogyakarta",
+  "JAWA TIMUR":"jatim, surabaya, malang", "BALI":"denpasar", "NUSA TENGGARA BARAT":"ntb, mataram, lombok",
+  "NUSA TENGGARA TIMUR":"ntt, kupang, labuan bajo", "KALIMANTAN BARAT":"kalbar, pontianak", "KALIMANTAN TENGAH":"kalteng, palangka raya",
+  "KALIMANTAN SELATAN":"kalsel, banjarmasin", "KALIMANTAN TIMUR":"kaltim, samarinda, balikpapan", "KALIMANTAN UTARA":"kaltara, tanjung selor",
+  "SULAWESI UTARA":"sulut, manado", "GORONTALO":"", "SULAWESI BARAT":"sulbar, mamuju", "SULAWESI SELATAN":"sulsel, makassar",
+  "SULAWESI TENGAH":"sulteng, palu", "SULAWESI TENGGARA":"sultra, kendari", "MALUKU":"ambon", "MALUKU UTARA":"malut, sofifi, ternate",
+  "PAPUA":"jayapura", "PAPUA BARAT":"pabar, manokwari", "PAPUA BARAT DAYA":"pbd, sorong", "PAPUA TENGAH":"nabire, timika",
+  "PAPUA SELATAN":"merauke", "PAPUA PEGUNUNGAN":"wamena, jayawijaya"
+};
+
+/* ===== Util ===== */
+const $ = id => document.getElementById(id);
+const fmt = n => "Rp " + Math.round(n).toLocaleString("id-ID");
+function norm(s){ return String(s).toLowerCase().replace(/sumatera/g,"sumatra").replace(/\./g,"").replace(/[^a-z0-9]+/g," ").replace(/\s+/g," ").trim(); }
+const pretty = n => ({"D.I. YOGYAKARTA":"DI Yogyakarta","DKI JAKARTA":"DKI Jakarta"})[n] || n.toLowerCase().replace(/(^|\s)\S/g, c => c.toUpperCase());
+const tokens = () => norm(S.q).split(" ").filter(Boolean);
+
+DATA.forEach(d => { d.alias = ALIAS[d.name] || ""; d.hay = norm(d.name + " " + d.reg + " " + d.alias); });
+
+// Lampiran 20.1: [provinsi, ibukota, tujuan, tarif 1x jalan]
+const IBU = IBU_RAW.map((r, i) => {
+  const d = DATA.find(x => x.name === r[0]);
+  return { no: i + 1, asal: r[1], tujuan: r[2], tarif: r[3], d, hay: d.hay + " " + norm(r[1] + " " + r[2]) };
+});
+
+/* ===== State ===== */
+const S = { tab:"home", q:"", reg:"ALL", gol:"ALL", sel:"", h30:false, over7:false,
+  sort:{ uh:{k:"no",d:1}, hotel:{k:"no",d:1}, taksi:{k:"no",d:1}, sewa:{k:"no",d:1}, ibu:{k:"no",d:1} } };
+const calc = { hari:3, malam:2, orang:1, gol:"h4", lumpsum:false, taksi:2 };
+let curSel = null;
+
+function getList(ignoreReg){
+  const t = tokens();
+  return DATA.filter(d => (ignoreReg || S.reg === "ALL" || d.reg === S.reg) && t.every(x => d.hay.includes(x)));
+}
+
+/* ===== Definisi tabel ===== */
+const TABLES = {
+  uh: { file:"Uang_Harian_KLH_2026", cols:() => [
+    { id:"lk",    label:"Luar Kota", sub:"100%", get:d => d.uh_lk },
+    { id:"lk60",  label:"Luar Kota", sub:"60% (transpor riil)", get:d => Math.round(d.uh_lk*0.6) },
+    { id:"dk",    label:"Dalam Kota", sub:"> 8 jam", get:d => d.uh_dk },
+    { id:"diklat",label:"Diklat", sub:"klasikal", get:d => d.uh_diklat } ] },
+  hotel: { file:"Tarif_Hotel_KLH_2026", cols:() => {
+    const m = S.h30 ? 0.3 : 1;
+    return Object.keys(GOL).map(k => ({ id:k, label:GOL[k], sub:S.h30?"lumpsum 30%":"", get:d => Math.round(d[k]*m) })); } },
+  taksi: { file:"Tarif_Taksi_KLH_2026", cols:() => [
+    { id:"taksi", label:"1× jalan", get:d => d.taksi },
+    { id:"pp",    label:"Pergi–pulang (2×)", get:d => d.taksi*2 },
+    { id:"note",  label:"Keterangan", text:true, get:d => d.taksiNote } ] },
+  sewa: { file:"Sewa_Mobil_KLH_2026",
+    groups:[["Insidentil / hari (17.1)",3],["Pejabat / bln (17.2)",1],["Operasional / bln (17.3)",3]],
+    cols:() => { const m = S.over7 ? 1.5 : 1; return [
+      { id:"r4",    label: S.over7 ? "Roda 4 > 7 seat" : "Roda 4", sub: S.over7 ? "150%" : "maks 7 seat", get:d => Math.round(d.r4*m) },
+      { id:"bus_s", label:"Bus Sedang", get:d => d.bus_s },
+      { id:"bus_b", label:"Bus Besar", get:d => d.bus_b },
+      { id:"es2",   label:"Pejabat Es. II", get:d => d.sewa_es2 },
+      { id:"pickup",label:"Pick Up", get:d => d.pickup },
+      { id:"mini",  label:"Minibus", get:d => d.minibus },
+      { id:"dg",    label:"Double Gardan", get:d => d.dg } ]; } }
+};
+
+function sortedList(tab, cols){
+  const st = S.sort[tab];
+  const col = cols.find(c => c.id === st.k);
+  const val = d => st.k === "no" ? d.no : st.k === "name" ? d.name : (col ? col.get(d) : d.no);
+  return getList().sort((a,b) => { const x = val(a), y = val(b); return (typeof x === "string" ? x.localeCompare(y) : x - y) * st.d; });
+}
+
+function nameCell(d){
+  const t = tokens();
+  let via = "";
+  if (t.length && !t.every(x => norm(d.name).includes(x))) {
+    const hit = d.alias.split(",").map(s => s.trim()).filter(p => p && t.some(x => norm(p).includes(x)));
+    if (hit.length) via = ` · <i>${hit.join(", ")}</i>`;
+  }
+  return `<a href="#" class="pname" data-go="${d.name}">${pretty(d.name)}</a><small>${d.reg}${via}</small>`;
+}
+
+function emptyHtml(cols){
+  return `<div class="empty">Tidak ada yang cocok dengan pencarian/filter.<button class="btn btn-light" data-reset>Hapus pencarian</button></div>`;
+}
+
+function setMeta(id, n, total){
+  const f = []; if (S.q.trim()) f.push(`“${S.q.trim()}”`); if (S.reg !== "ALL") f.push(S.reg);
+  $("meta-" + id).innerHTML = `${n} dari ${total} ${id==="jkt"||id==="ibu"?"rute":"provinsi"}` + (f.length ? `<small>filter: ${f.join(" · ")}</small>` : "");
+}
+
+function renderTable(tab){
+  const T = TABLES[tab], cols = T.cols(), list = sortedList(tab, cols), st = S.sort[tab];
+  const arrow = id => st.k === id ? (st.d > 0 ? " ▲" : " ▼") : "";
+  const hlOf = c => (tab === "hotel" && S.gol !== "ALL") ? (c.id === S.gol ? "hl" : "dim") : "";
+  const th = c => `<th class="${c.text?"":"num"} ${tab==="hotel"&&c.id===S.gol?"hl":""}" data-sort="${c.id}">${c.label}${arrow(c.id)}${c.sub?`<small>${c.sub}</small>`:""}</th>`;
+  const first = `<th class="first" data-sort="name" ${T.groups?'rowspan="2"':""}>Provinsi${arrow("name")}</th>`;
+  let head;
+  if (T.groups) head = `<tr class="grp">${first}${T.groups.map(g => `<th colspan="${g[1]}">${g[0]}</th>`).join("")}</tr><tr class="sub">${cols.map(th).join("")}</tr>`;
+  else head = `<tr>${first}${cols.map(th).join("")}</tr>`;
+  const rows = list.map(d => `<tr><td class="first">${nameCell(d)}</td>` + cols.map(c => {
+    if (c.text) return `<td class="note">${c.get(d)}</td>`;
+    const v = c.get(d);
+    return `<td class="num ${hlOf(c)}" data-copy="${v}" title="Klik untuk menyalin">${fmt(v)}</td>`;
+  }).join("") + `</tr>`).join("");
+  $("wrap-" + tab).innerHTML = list.length ? `<table><thead>${head}</thead><tbody>${rows}</tbody></table>` : emptyHtml();
+  setMeta(tab, list.length, DATA.length);
+}
+
+function renderIbu(){
+  const t = tokens(), st = S.sort.ibu;
+  const list = IBU.filter(r => (S.reg === "ALL" || r.d.reg === S.reg) && t.every(x => r.hay.includes(x)));
+  const val = r => ({ no:r.no, tujuan:r.tujuan, prov:r.d.name, asal:r.asal })[st.k] ?? r.tarif;
+  list.sort((a, b) => { const x = val(a), y = val(b); return (typeof x === "string" ? x.localeCompare(y) : x - y) * st.d; });
+  const ar = id => st.k === id ? (st.d > 0 ? " ▲" : " ▼") : "";
+  const rows = list.map(r => `<tr><td class="first"><b>${r.tujuan}</b><small>dari ${r.asal}</small></td>
+    <td><a href="#" class="pname" data-go="${r.d.name}">${pretty(r.d.name)}</a></td><td>${r.asal}</td>
+    <td class="num" data-copy="${r.tarif}" title="Klik untuk menyalin">${fmt(r.tarif)}</td><td class="num" data-copy="${r.tarif*2}" title="Klik untuk menyalin">${fmt(r.tarif*2)}</td></tr>`).join("");
+  $("wrap-ibu").innerHTML = list.length
+    ? `<table><thead><tr><th class="first" data-sort="tujuan">Kab/Kota tujuan${ar("tujuan")}</th><th data-sort="prov">Provinsi${ar("prov")}</th><th data-sort="asal">Ibukota asal${ar("asal")}</th><th class="num" data-sort="tarif">1× jalan${ar("tarif")}</th><th class="num" data-sort="pp">Pergi–pulang (2×)${ar("pp")}</th></tr></thead><tbody>${rows}</tbody></table>`
+    : `<div class="empty">Tidak ada rute yang cocok di Lampiran 20.1. Tujuan yang belum tercantum mengacu pada harga pasar (<i>at cost</i>). <button class="btn btn-light" data-reset>Hapus pencarian</button></div>`;
+  setMeta("ibu", list.length, IBU.length);
+}
+
+function transHtml(d){
+  const jkt = d.name === "DKI JAKARTA";
+  const rs = jkt ? JKT_SEKITAR.map(r => ({ t:r.tujuan, v:r.tarif })) : IBU.filter(r => r.d === d).map(r => ({ t:r.tujuan, v:r.tarif }));
+  const asal = jkt ? "Jakarta" : (IBU.find(r => r.d === d) || {}).asal;
+  const head = `<div class="sec">Transport ${asal ? "dari " + asal : "ibukota provinsi"} ke kab/kota sekitar <span style="text-transform:none;font-weight:500;color:var(--muted)">— 1× jalan; sub-teks: pergi–pulang</span></div>`;
+  if (!rs.length) return head + `<div class="empty" style="padding:12px;text-align:left">Belum tercantum di Lampiran 20.1 — mengacu pada harga pasar (<i>at cost</i>).</div>`;
+  return head + `<div class="tiles">${rs.map(r => tile(r.t, r.v, { s:"PP: " + fmt(r.v*2) })).join("")}</div>`;
+}
+
+function renderJkt(){
+  const t = tokens();
+  const list = JKT_SEKITAR.filter(r => t.every(x => norm(r.tujuan + " " + r.asal).includes(x)));
+  const rows = list.map(r => `<tr><td class="first"><b>${r.tujuan}</b><small>dari ${r.asal}</small></td>
+    <td class="num" data-copy="${r.tarif}">${fmt(r.tarif)}</td><td class="num" data-copy="${r.tarif*2}">${fmt(r.tarif*2)}</td></tr>`).join("");
+  $("wrap-jkt").innerHTML = list.length
+    ? `<table><thead><tr><th class="first">Tujuan</th><th class="num">1× jalan</th><th class="num">Pergi–pulang (2×)</th></tr></thead><tbody>${rows}</tbody></table>`
+    : `<div class="empty">Tidak ada rute yang cocok. <button class="btn btn-light" data-reset>Hapus pencarian</button></div>`;
+  setMeta("jkt", list.length, JKT_SEKITAR.length);
+}
+
+/* ===== Ringkasan & kalkulator ===== */
+const tile = (l, v, opt = {}) => `<div class="tile ${opt.hl?"hl":""}" data-copy="${v}" title="Klik untuk menyalin"><div class="l">${l}</div><div class="v">${fmt(v)}</div>${opt.s?`<div class="s">${opt.s}</div>`:""}</div>`;
+
+function renderHome(){
+  const list = getList();
+  let sel = null;
+  if (list.length === 1) sel = list[0];
+  else if (S.sel) sel = list.find(d => d.name === S.sel) || null;
+  curSel = sel;
+  $("home-chips").innerHTML = list.map(d => `<button class="chip ${sel&&sel.name===d.name?"on":""}" data-pick="${d.name}">${pretty(d.name)}</button>`).join("");
+  $("meta-home").innerHTML = list.length === DATA.length ? "Pilih provinsi (atau ketik di kotak cari) untuk melihat semua tarif dan menghitung estimasi biaya" : `${list.length} provinsi cocok`;
+  const box = $("home-detail");
+  if (!sel) {
+    box.innerHTML = list.length
+      ? `<div class="empty">👆 Pilih salah satu provinsi di atas untuk melihat semua tarifnya.</div>`
+      : `<div class="empty">Tidak ada provinsi yang cocok. <button class="btn btn-light" data-reset>Hapus pencarian</button></div>`;
+    return;
+  }
+  const d = sel, hlg = k => S.gol === k;
+  box.innerHTML = `
+    <h2>${pretty(d.name)}</h2><div class="reg">${d.reg}</div>
+    <div class="sec">Uang harian</div>
+    <div class="tiles">${tile("Luar kota (100%)", d.uh_lk)}${tile("Luar kota 60%", Math.round(d.uh_lk*.6), {s:"transpor riil"})}${tile("Dalam kota > 8 jam", d.uh_dk)}${tile("Diklat (klasikal)", d.uh_diklat)}</div>
+    <div class="sec">Penginapan / malam <span style="text-transform:none;font-weight:500;color:var(--muted)">— sub-teks: lumpsum 30% bila tidak menginap</span></div>
+    <div class="tiles">${Object.keys(GOL).map(k => tile(GOL[k], d[k], {hl:hlg(k), s:"30%: " + fmt(d[k]*.3)})).join("")}</div>
+    <div class="sec">Taksi bandara</div>
+    <div class="tiles">${tile("1× jalan", d.taksi, {s:d.taksiNote})}${tile("Pergi–pulang (2×)", d.taksi*2)}</div>
+    <div class="sec">Sewa kendaraan</div>
+    <div class="tiles">
+      ${tile("Roda 4 / hari (maks 7 seat)", d.r4)}${tile("Roda 4 > 7 seat / hari", Math.round(d.r4*1.5), {s:"150%"})}
+      ${tile("Bus sedang / hari", d.bus_s)}${tile("Bus besar / hari", d.bus_b)}
+      ${tile("Pick up / bulan", d.pickup)}${tile("Minibus / bulan", d.minibus)}
+      ${tile("Double gardan / bulan", d.dg)}${tile("Pejabat Es. II / bulan", d.sewa_es2)}
+    </div>
+    ${transHtml(d)}
+    <div class="calc">
+      <h3>🧮 Estimasi biaya perjalanan dinas ke ${pretty(d.name)} <small style="font-weight:500;color:var(--muted)">(batas tertinggi, belum termasuk tiket)</small></h3>
+      <div class="controls">
+        <div><label class="f">Jumlah hari</label><input type="number" id="c-hari" min="1" value="${calc.hari}"></div>
+        <div><label class="f">Jumlah malam</label><input type="number" id="c-malam" min="0" value="${calc.malam}"></div>
+        <div><label class="f">Jumlah orang</label><input type="number" id="c-orang" min="1" value="${calc.orang}"></div>
+        <div><label class="f">Golongan</label><select id="c-gol">${Object.keys(GOL).map(k => `<option value="${k}" ${calc.gol===k?"selected":""}>${GOL[k]}</option>`).join("")}</select></div>
+        <div><label class="f">Taksi bandara (kali)</label><input type="number" id="c-taksi" min="0" value="${calc.taksi}"></div>
+        <div><label class="check-label"><input type="checkbox" id="c-lump" ${calc.lumpsum?"checked":""}> Tidak menginap (lumpsum 30%)</label></div>
+      </div>
+      <div class="calc-out" id="calc-out"></div>
+    </div>`;
+  updateCalc();
+}
+
+function updateCalc(){
+  const d = curSel; if (!d || !$("calc-out")) return;
+  const n = v => Math.max(0, +v || 0);
+  const hotelUnit = d[calc.gol] * (calc.lumpsum ? 0.3 : 1);
+  const a = d.uh_lk * calc.hari * calc.orang, b = hotelUnit * calc.malam * calc.orang, c = d.taksi * calc.taksi * calc.orang;
+  const row = (l, x, f) => `<tr><td>${l}<div class="x">${f}</div></td><td class="num" data-copy="${Math.round(x)}">${fmt(x)}</td></tr>`;
+  $("calc-out").innerHTML = `<table><tbody>
+    ${row("Uang harian (luar kota)", a, `${fmt(d.uh_lk)} × ${calc.hari} hari × ${calc.orang} orang`)}
+    ${row("Penginapan" + (calc.lumpsum ? " (lumpsum 30%)" : ""), b, `${fmt(hotelUnit)} × ${calc.malam} malam × ${calc.orang} orang`)}
+    ${row("Taksi bandara", c, `${fmt(d.taksi)} × ${calc.taksi} kali × ${calc.orang} orang`)}
+    <tr class="total" data-copy="${Math.round(a+b+c)}" title="Klik untuk menyalin"><td>Total estimasi</td><td class="num">${fmt(a+b+c)}</td></tr></tbody></table>`;
+}
+
+/* ===== Chip wilayah, render, hash ===== */
+function renderChips(){
+  const t = getList(true);
+  $("regChips").innerHTML = `<button class="chip ${S.reg==="ALL"?"on":""}" data-reg="ALL">Semua<span>${t.length}</span></button>` +
+    REGIONS.map(r => `<button class="chip ${S.reg===r?"on":""}" data-reg="${r}">${r}<span>${t.filter(d => d.reg === r).length}</span></button>`).join("");
+}
+
+function render(){
+  $("searchWrap").classList.toggle("has", !!S.q);
+  renderChips();
+  if (S.tab === "home") renderHome();
+  else if (S.tab === "jkt") renderJkt();
+  else if (S.tab === "ibu") renderIbu();
+  else renderTable(S.tab);
+  document.querySelectorAll(".nav-btn").forEach(b => b.classList.toggle("active", b.dataset.tab === S.tab));
+  document.querySelectorAll(".tab-pane").forEach(p => p.classList.toggle("active", p.id === "pane-" + S.tab));
+  document.title = `${TAB_NAMES[S.tab]} — Standar Biaya KLH/BPLH TA 2026`;
+  const p = new URLSearchParams();
+  if (S.tab !== "home") p.set("tab", S.tab);
+  if (S.q) p.set("q", S.q); if (S.reg !== "ALL") p.set("reg", S.reg);
+  if (S.gol !== "ALL") p.set("gol", S.gol); if (S.sel) p.set("sel", S.sel);
+  try { history.replaceState(null, "", p.toString() ? "#" + p : location.pathname + location.search); } catch(e) {}
+}
+
+function setTab(t){ S.tab = t; render(); window.scrollTo({ top:0 }); }
+
+function toast(msg){
+  const t = $("toast"); t.textContent = msg; t.classList.add("show");
+  clearTimeout(toast.t); toast.t = setTimeout(() => t.classList.remove("show"), 1600);
+}
+function copyText(v){
+  const done = () => toast("Disalin: " + fmt(v) + "  (angka: " + v + ")");
+  if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(String(v)).then(done, done);
+  else { const ta = document.createElement("textarea"); ta.value = v; document.body.appendChild(ta); ta.select(); try{document.execCommand("copy")}catch(e){} ta.remove(); done(); }
+}
+
+/* ===== CSV ===== */
+function downloadCSV(name, csv){
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(new Blob(["\uFEFF" + csv], { type:"text/csv;charset=utf-8;" }));
+  a.download = name + ".csv"; a.click();
+}
+function exportCSV(tab){
+  if (tab === "jkt") {
+    const t = tokens(), l = JKT_SEKITAR.filter(r => t.every(x => norm(r.tujuan).includes(x)));
+    downloadCSV("Transport_DKI_Jakarta_Sekitar_2026", "Asal,Tujuan,Tarif 1x Jalan,Tarif PP (2x)\n" + l.map(r => `"${r.asal}","${r.tujuan}",${r.tarif},${r.tarif*2}`).join("\n"));
+    return;
+  }
+  if (tab === "ibu") {
+    const t = tokens(), l = IBU.filter(r => (S.reg === "ALL" || r.d.reg === S.reg) && t.every(x => r.hay.includes(x)));
+    downloadCSV("Transport_Ibukota_Provinsi_KLH_2026", "Provinsi,Ibukota,Tujuan,Tarif 1x Jalan,Tarif PP (2x)\n" + l.map(r => `"${r.d.name}","${r.asal}","${r.tujuan}",${r.tarif},${r.tarif*2}`).join("\n"));
+    return;
+  }
+  const T = TABLES[tab], cols = T.cols(), list = sortedList(tab, cols);
+  const esc = s => `"${String(s).replace(/"/g, '""')}"`;
+  const head = ["Provinsi","Wilayah"].concat(cols.map(c => c.label + (c.sub ? " " + c.sub : ""))).map(esc).join(",");
+  downloadCSV(T.file, head + "\n" + list.map(d => [esc(d.name), esc(d.reg)].concat(cols.map(c => c.text ? esc(c.get(d)) : c.get(d))).join(",")).join("\n"));
+}
+
+/* ===== Event ===== */
+document.addEventListener("click", e => {
+  const el = e.target.closest("[data-copy],[data-go],[data-pick],[data-sort],[data-tab],[data-reg],[data-reset],[data-export]");
+  if (!el) return;
+  if (el.dataset.go !== undefined) { e.preventDefault(); S.sel = el.dataset.go; S.tab = "home"; render(); window.scrollTo({top:0}); }
+  else if (el.dataset.pick !== undefined) { S.sel = el.dataset.pick; render(); }
+  else if (el.dataset.sort !== undefined) {
+    const st = S.sort[S.tab], k = el.dataset.sort;
+    if (st.k === k) st.d = -st.d; else { st.k = k; st.d = ["name","note","tujuan","prov","asal"].includes(k) ? 1 : -1; }
+    render();
+  }
+  else if (el.dataset.tab) setTab(el.dataset.tab);
+  else if (el.dataset.reg) { S.reg = el.dataset.reg; render(); }
+  else if (el.dataset.reset !== undefined) { S.q = ""; S.reg = "ALL"; $("q").value = ""; render(); }
+  else if (el.dataset.export) exportCSV(el.dataset.export);
+  else if (el.dataset.copy !== undefined) copyText(+el.dataset.copy);
+});
+
+$("q").addEventListener("input", e => { S.q = e.target.value; render(); });
+$("q").addEventListener("keydown", e => { if (e.key === "Escape") { S.q = ""; e.target.value = ""; render(); } });
+$("qClear").addEventListener("click", () => { S.q = ""; $("q").value = ""; render(); $("q").focus(); });
+$("gol").addEventListener("change", e => { S.gol = e.target.value; if (S.gol !== "ALL") calc.gol = S.gol; render(); });
+$("chkHotel30").addEventListener("change", e => { S.h30 = e.target.checked; render(); });
+$("chkOver7").addEventListener("change", e => { S.over7 = e.target.checked; render(); });
+document.addEventListener("keydown", e => {
+  if (e.key === "/" && !/INPUT|SELECT|TEXTAREA/.test(document.activeElement.tagName)) { e.preventDefault(); $("q").focus(); $("q").select(); }
+});
+document.addEventListener("input", e => {
+  const id = e.target.id; if (!id || id[1] !== "-") return;
+  const n = v => Math.max(0, +v || 0);
+  if (id === "c-hari") { calc.hari = Math.max(1, n(e.target.value)); calc.malam = Math.max(0, calc.hari - 1); $("c-malam").value = calc.malam; }
+  else if (id === "c-malam") calc.malam = n(e.target.value);
+  else if (id === "c-orang") calc.orang = Math.max(1, n(e.target.value));
+  else if (id === "c-gol") calc.gol = e.target.value;
+  else if (id === "c-taksi") calc.taksi = n(e.target.value);
+  else if (id === "c-lump") calc.lumpsum = e.target.checked;
+  updateCalc();
+});
+
+/* ===== Init dari URL ===== */
+(function init(){
+  const p = new URLSearchParams(location.hash.slice(1));
+  if (TAB_NAMES[p.get("tab")]) S.tab = p.get("tab");
+  S.q = p.get("q") || ""; if (REGIONS.includes(p.get("reg"))) S.reg = p.get("reg");
+  if (GOL[p.get("gol")]) { S.gol = p.get("gol"); calc.gol = S.gol; }
+  S.sel = p.get("sel") || "";
+  $("q").value = S.q; $("gol").value = S.gol;
+  render();
+})();
+</script>
+</body>
+</html>
